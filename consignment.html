@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Consignment Tracking Dashboard</title>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+		<link href="https://ai-public.creatie.ai/gen_page/tailwind-custom.css" rel="stylesheet" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+		<script src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
+		<script src="https://ai-public.creatie.ai/gen_page/tailwind-config.min.js" data-color="#000000" data-border-radius="small"></script>
+	</head>
+	<body class="bg-gray-50">
+		<div class="flex h-screen">
+			<aside class="w-64 bg-white border-r border-gray-200">
+				<div class="flex items-center justify-center h-16 border-b border-gray-200">
+					<img src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo" class="h-8" />
+				</div>
+				<nav class="mt-6">
+					<a href="#" class="flex items-center px-6 py-3 text-sm font-medium text-custom bg-indigo-50">
+						<i class="fas fa-chart-line w-5 h-5 mr-3"></i>
+						Dashboard
+					</a>
+					<a href="#" class="flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
+						<i class="fas fa-users w-5 h-5 mr-3"></i>
+						Drivers Management
+					</a>
+					<a href="#" class="flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
+						<i class="fas fa-truck w-5 h-5 mr-3"></i>
+						Vehicle Management
+					</a>
+					<a href="#" class="flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
+						<i class="fas fa-file-alt w-5 h-5 mr-3"></i>
+						Reports
+					</a>
+					<a href="#" class="flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
+						<i class="fas fa-cog w-5 h-5 mr-3"></i>
+						Settings
+					</a>
+				</nav>
+			</aside>
+			<main class="flex-1 overflow-auto">
+				<div class="px-8 py-6">
+					<header class="flex justify-between items-center mb-8"><h1 class="text-2xl font-semibold text-gray-900">Create New Consignment</h1></header>
+					<form class="bg-white rounded-lg shadow-sm p-6">
+						<div class="grid grid-cols-2 gap-6">
+							<div class="space-y-4">
+								<div><label class="block text-sm font-medium text-gray-700">Consignment ID</label><input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" value="#CON-2024-004" readonly="" /></div>
+								<div><label class="block text-sm font-medium text-gray-700">Customer Name</label><input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Enter customer name" /></div>
+								<div><label class="block text-sm font-medium text-gray-700">Origin</label><input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Enter origin address" /></div>
+								<div><label class="block text-sm font-medium text-gray-700">Destination</label><input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" placeholder="Enter destination address" /></div>
+							</div>
+							<div class="space-y-4">
+								<div>
+									<label class="block text-sm font-medium text-gray-700">Select Driver</label
+									><select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+										<option>Select driver</option>
+										<option>Mike Johnson</option>
+										<option>David Wilson</option>
+										<option>Sarah Parker</option>
+									</select>
+								</div>
+								<div>
+									<label class="block text-sm font-medium text-gray-700">Select Vehicle</label
+									><select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2">
+										<option>Select vehicle</option>
+										<option>XY-1234</option>
+										<option>AB-5678</option>
+										<option>CD-9012</option>
+									</select>
+								</div>
+								<div><label class="block text-sm font-medium text-gray-700">Expected Delivery Date</label><input type="date" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" /></div>
+								<div><label class="block text-sm font-medium text-gray-700">Package Details</label><textarea class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" rows="3" placeholder="Enter package details"></textarea></div>
+							</div>
+						</div>
+						<div class="mt-6 flex justify-end space-x-4"><button type="button" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">Cancel</button><button type="submit" class="px-4 py-2 bg-custom text-white rounded-md text-sm font-medium hover:bg-indigo-700">Create Consignment</button></div>
+					</form>
+				</div>
+			</main>
+		</div>
+		<script>
+			const pieChart = echarts.init(document.getElementById("pieChart"));
+			const pieOption = {
+				animation: false,
+				tooltip: {
+					trigger: "item",
+				},
+				legend: {
+					orient: "vertical",
+					right: 10,
+					top: "center",
+				},
+				series: [
+					{
+						name: "Delivery Status",
+						type: "pie",
+						radius: ["40%", "70%"],
+						avoidLabelOverlap: false,
+						label: {
+							show: false,
+						},
+						emphasis: {
+							label: {
+								show: true,
+								fontSize: "14",
+								fontWeight: "bold",
+							},
+						},
+						labelLine: {
+							show: false,
+						},
+						data: [
+							{ value: 45, name: "In Transit" },
+							{ value: 30, name: "Delivered" },
+							{ value: 15, name: "Pending" },
+							{ value: 10, name: "Delayed" },
+						],
+					},
+				],
+			};
+			pieChart.setOption(pieOption);
+			const lineChart = echarts.init(document.getElementById("lineChart"));
+			const lineOption = {
+				animation: false,
+				tooltip: {
+					trigger: "axis",
+				},
+				xAxis: {
+					type: "category",
+					data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+				},
+				yAxis: {
+					type: "value",
+				},
+				series: [
+					{
+						data: [120, 132, 101, 134, 90, 230, 210],
+						type: "line",
+						smooth: true,
+					},
+				],
+			};
+			lineChart.setOption(lineOption);
+			window.addEventListener("resize", function () {
+				pieChart.resize();
+				lineChart.resize();
+			});
+		</script>
+	</body>
+</html>
