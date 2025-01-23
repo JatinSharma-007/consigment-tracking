@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Consignment Tracking Dashboard</title>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+		<link href="https://ai-public.creatie.ai/gen_page/tailwind-custom.css" rel="stylesheet" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+		<script src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
+		<script src="https://ai-public.creatie.ai/gen_page/tailwind-config.min.js" data-color="#000000" data-border-radius="small"></script>
+	</head>
+	<body class="bg-gray-50">
+		<div class="flex h-screen">
+			<aside class="w-64 bg-white border-r border-gray-200">
+				<div class="flex items-center justify-center h-16 border-b border-gray-200">
+					<img onclick="window.location.href='index.html'" src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo" class="h-8" />
+				</div>
+				<nav class="mt-6">
+					<a href="index.html" class="flex items-center px-6 py-3 text-sm font-medium text-custom bg-indigo-50">
+						<i class="fas fa-chart-line w-5 h-5 mr-3"></i>
+						Dashboard
+					</a>
+					<a href="#" class="flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
+						<i class="fas fa-users w-5 h-5 mr-3"></i>
+						Drivers Management
+					</a>
+					<a href="vehicle.html" class="flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
+						<i class="fas fa-truck w-5 h-5 mr-3"></i>
+						Vehicle Management
+					</a>
+					<a href="#" class="flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
+						<i class="fas fa-file-alt w-5 h-5 mr-3"></i>
+						Reports
+					</a>
+					<a href="#" class="flex items-center px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
+						<i class="fas fa-cog w-5 h-5 mr-3"></i>
+						Settings
+					</a>
+				</nav>
+			</aside>
+			<main class="flex-1 overflow-auto">
+				<div class="px-8 py-6">
+					<header class="flex justify-between items-center mb-8"><h1 class="text-2xl font-semibold text-gray-900">Vehicle Management</h1></header>
+					<form class="bg-white rounded-lg shadow-sm p-6">
+						<div class="flex justify-between items-center mb-6">
+							<h2 class="text-lg font-medium text-gray-900">Vehicle List</h2>
+							<button class="px-4 py-2 bg-custom text-white rounded-md text-sm font-medium hover:bg-indigo-700" onclick="document.getElementById(&#39;addVehicleModal&#39;).classList.remove(&#39;hidden&#39;)"><i class="fas fa-plus mr-2"></i>Add New Vehicle</button>
+						</div>
+						<div class="overflow-x-auto">
+							<table class="min-w-full divide-y divide-gray-200">
+								<thead class="bg-gray-50">
+									<tr>
+										<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vehicle ID</th>
+										<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vehicle Type</th>
+										<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">License Plate</th>
+										<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+										<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Maintenance</th>
+										<th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+									</tr>
+								</thead>
+								<tbody class="bg-white divide-y divide-gray-200">
+									<tr>
+										<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">VEH-001</td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Truck 10T</td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">XY-1234</td>
+										<td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Ready</span></td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-02-15</td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+											<button class="text-indigo-600 hover:text-indigo-900 mr-3" onclick="document.getElementById(&#39;editVehicleModal&#39;).classList.remove(&#39;hidden&#39;)"><i class="fas fa-edit"></i></button><button class="text-red-600 hover:text-red-900" onclick="if(confirm(&#39;Are you sure you want to delete this vehicle?&#39;)) { console.log(&#39;Vehicle deleted&#39;); }"><i class="fas fa-trash"></i></button>
+										</td>
+									</tr>
+									<tr>
+										<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">VEH-002</td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Van 5T</td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">AB-5678</td>
+										<td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">On Transit</span></td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-02-10</td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+											<button class="text-indigo-600 hover:text-indigo-900 mr-3" onclick="document.getElementById(&#39;editVehicleModal&#39;).classList.remove(&#39;hidden&#39;)"><i class="fas fa-edit"></i></button><button class="text-red-600 hover:text-red-900" onclick="if(confirm(&#39;Are you sure you want to delete this vehicle?&#39;)) { console.log(&#39;Vehicle deleted&#39;); }"><i class="fas fa-trash"></i></button>
+										</td>
+									</tr>
+									<tr>
+										<td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">VEH-003</td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Truck 15T</td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">CD-9012</td>
+										<td class="px-6 py-4 whitespace-nowrap"><span class="px-2 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800">Repairing</span></td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2024-02-05</td>
+										<td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+											<button class="text-indigo-600 hover:text-indigo-900 mr-3" onclick="document.getElementById(&#39;editVehicleModal&#39;).classList.remove(&#39;hidden&#39;)"><i class="fas fa-edit"></i></button><button class="text-red-600 hover:text-red-900" onclick="if(confirm(&#39;Are you sure you want to delete this vehicle?&#39;)) { console.log(&#39;Vehicle deleted&#39;); }"><i class="fas fa-trash"></i></button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</form>
+				</div>
+			</main>
+		</div>
+		<script>
+			const pieChart = echarts.init(document.getElementById("pieChart"));
+			const pieOption = {
+				animation: false,
+				tooltip: {
+					trigger: "item",
+				},
+				legend: {
+					orient: "vertical",
+					right: 10,
+					top: "center",
+				},
+				series: [
+					{
+						name: "Delivery Status",
+						type: "pie",
+						radius: ["40%", "70%"],
+						avoidLabelOverlap: false,
+						label: {
+							show: false,
+						},
+						emphasis: {
+							label: {
+								show: true,
+								fontSize: "14",
+								fontWeight: "bold",
+							},
+						},
+						labelLine: {
+							show: false,
+						},
+						data: [
+							{ value: 45, name: "In Transit" },
+							{ value: 30, name: "Delivered" },
+							{ value: 15, name: "Pending" },
+							{ value: 10, name: "Delayed" },
+						],
+					},
+				],
+			};
+			pieChart.setOption(pieOption);
+			const lineChart = echarts.init(document.getElementById("lineChart"));
+			const lineOption = {
+				animation: false,
+				tooltip: {
+					trigger: "axis",
+				},
+				xAxis: {
+					type: "category",
+					data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+				},
+				yAxis: {
+					type: "value",
+				},
+				series: [
+					{
+						data: [120, 132, 101, 134, 90, 230, 210],
+						type: "line",
+						smooth: true,
+					},
+				],
+			};
+			lineChart.setOption(lineOption);
+			window.addEventListener("resize", function () {
+				pieChart.resize();
+				lineChart.resize();
+			});
+			function closeModal(modalId) {
+				document.getElementById(modalId).classList.add("hidden");
+			}
+		</script>
+		<div id="addVehicleModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex items-center justify-center">
+			<div class="bg-white rounded-lg p-8 w-1/2">
+				<div class="flex justify-between items-center mb-6">
+					<h3 class="text-xl font-semibold">Add New Vehicle</h3>
+					<button onclick="document.getElementById(&#39;addVehicleModal&#39;).classList.add(&#39;hidden&#39;)" class="text-gray-500 hover:text-gray-700"><i class="fas fa-times"></i></button>
+				</div>
+				<form class="space-y-4" onsubmit="event.preventDefault(); closeModal(&#39;addVehicleModal&#39;); return false;">
+					<div><label class="block text-sm font-medium text-gray-700">Vehicle Type</label><input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" /></div>
+					<div><label class="block text-sm font-medium text-gray-700">License Plate</label><input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" /></div>
+					<div>
+						<label class="block text-sm font-medium text-gray-700">Status</label
+						><select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+							<option>Ready</option>
+							<option>On Transit</option>
+							<option>Repairing</option>
+						</select>
+					</div>
+					<div><label class="block text-sm font-medium text-gray-700">Last Maintenance</label><input type="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" /></div>
+					<div class="flex justify-end mt-6 space-x-3"><button type="button" onclick="closeModal(&#34;addVehicleModal&#34;)" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200">Cancel</button><button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-custom rounded-md hover:bg-indigo-700">Save Vehicle</button></div>
+				</form>
+			</div>
+		</div>
+		<div id="editVehicleModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex items-center justify-center">
+			<div class="bg-white rounded-lg p-8 w-1/2">
+				<div class="flex justify-between items-center mb-6">
+					<h3 class="text-xl font-semibold">Edit Vehicle</h3>
+					<button onclick="closeModal(&#34;editVehicleModal&#34;)" class="text-gray-500 hover:text-gray-700"><i class="fas fa-times"></i></button>
+				</div>
+				<form class="space-y-4">
+					<div><label class="block text-sm font-medium text-gray-700">Vehicle Type</label><input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" /></div>
+					<div><label class="block text-sm font-medium text-gray-700">License Plate</label><input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" /></div>
+					<div>
+						<label class="block text-sm font-medium text-gray-700">Status</label
+						><select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+							<option>Ready</option>
+							<option>On Transit</option>
+							<option>Repairing</option>
+						</select>
+					</div>
+					<div><label class="block text-sm font-medium text-gray-700">Last Maintenance</label><input type="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" /></div>
+					<div class="flex justify-end mt-6 space-x-3"><button type="button" onclick="closeModal(&#34;editVehicleModal&#34;)" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200">Cancel</button><button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-custom rounded-md hover:bg-indigo-700">Update Vehicle</button></div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
